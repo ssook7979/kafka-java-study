@@ -1,0 +1,21 @@
+{
+    "name": "randomlong_sink_connector",
+    "config": {
+        "connector.class": "com.dataAlliance.hspark.kafka.connect.sink.randInt.RandomIntSinkConnector",
+        "tasks.max": "1",
+        "topics": "randomlong_topic",
+        "database.filename": "randomlong.db"
+    }
+}
+
+
+{
+    "name": "randomlong_source_connector",
+    "config": {
+        "connector.class": "com.dataAlliance.hspark.kafka.connect.connector.RandomLongSourceConnector",
+        "tasks.max": "1",
+		"api.url":"host.docker.internal:8000",
+		"topic":"randomlong_topic",
+		"sleep.seconds":5
+    }
+}

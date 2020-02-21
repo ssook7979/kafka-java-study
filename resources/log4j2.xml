@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration >
+  <appenders>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout pattern="[%d] %highlight{%-5p}{INFO=red} %-17c: %m%n" />
+    </Console>
+  </appenders>   
+
+  <Loggers>
+    <root level="INFO">
+        <AppenderRef ref="STDOUT" />
+    </root>
+    <logger name="com.data_alliance.hspark.kafka" level="debug" additivity="true" >
+      <AppenderRef ref="STDOUT" />
+    </logger>
+  </Loggers>
+</Configuration>
