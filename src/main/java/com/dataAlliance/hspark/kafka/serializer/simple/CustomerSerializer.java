@@ -10,6 +10,11 @@ import com.dataAlliance.hspark.kafka.obj.Customer;
 public class CustomerSerializer implements Serializer<Customer>{
 
 	@Override
+	public void close() {
+
+	}
+
+	@Override
 	public byte[] serialize(String topic, Customer data) {
 		byte[] serializedName = null;
 		int stringSize;

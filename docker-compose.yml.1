@@ -1,0 +1,230 @@
+version: "3.7"
+services:
+#     zoo1:
+#         image: zookeeper
+#         restart: always
+#         hostname: zoo1
+#         ports:
+#           - "2181:2181"
+#         expose:
+#           - "2181"
+#         environment:
+#           ZOO_MY_ID: 1
+#           ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181
+#           ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=zoo3:2888:3888;2181
+#     zoo2:
+#         image: zookeeper
+#         restart: always
+#         hostname: zoo2
+#         ports:
+#           - "2182:2181"
+#         expose:
+#           - "2182"
+#         environment:
+#           ZOO_MY_ID: 2
+#           ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=0.0.0.0:2888:3888;2181 server.3=zoo3:2888:3888;2181
+#     zoo3:
+#         image: zookeeper
+#         restart: always
+#         hostname: zoo3
+#         ports:
+#           - 2183:2181
+#         expose:
+#           - "2183"
+#         environment:
+#           ZOO_MY_ID: 3
+#           ZOO_SERVERS: server.1=zoo1:2888:3888;2181 server.2=zoo2:2888:3888;2181 server.3=0.0.0.0:2888:3888;2181
+#     broker1:
+#         build: .
+#         image: kafka-example
+#         hostname: broker1
+#         restart: always
+#         depends_on: 
+#             - zoo1
+#             - zoo2
+#             - zoo3
+#         ports:
+#             - "9091:9091"
+#         expose:
+#             - "9091"
+#         volumes:
+#             - ./resources/broker1/server.properties:/opt/kafka_2.12-2.4.0/config/server.properties
+#             - ./resources/security-test/server.properties:/opt/kafka_2.12-2.4.0/config/server.properties
+#         command:
+#             - /bin/sh
+#             - -c
+#             - |
+#                 ./kafka_2.12-2.4.0/bin/kafka-server-start.sh /opt/kafka_2.12-2.4.0/config/server.properties
+#         #networks:
+#         #    default:
+#         #        ipv4_address: 172.20.1.6
+#     broker2:
+#         build: .
+#         image: kafka-example
+#         hostname: broker2
+#         restart: always
+#         depends_on:
+#             - zoo1
+#             - zoo2
+#             - zoo3
+#         ports:
+#             - "9092:9092"
+#         expose:
+#             - "9092"
+#         volumes:
+#             - ./resources/broker2/server.properties:/opt/kafka_2.12-2.4.0/config/server.properties
+#         command:
+#             - /bin/sh
+#             - -c
+#             - |
+#                 ./kafka_2.12-2.4.0/bin/kafka-server-start.sh ./kafka_2.12-2.4.0/config/server.properties
+#         #networks:
+#         #    default:
+#         #        ipv4_address: 172.20.1.7
+#     broker3:
+#         build: .
+#         image: kafka-example
+#         hostname: broker3
+#         restart: always
+#         depends_on:
+#             - zoo1
+#             - zoo2
+#             - zoo3
+#         ports:
+#             - "9093:9093"
+#         expose:
+#             - "9093"
+#         volumes:
+#             - ./resources/broker3/server.properties:/opt/kafka_2.12-2.4.0/config/server.properties
+#         command:
+#             - /bin/sh
+#             - -c
+#             - |
+#                 ./kafka_2.12-2.4.0/bin/kafka-server-start.sh ./kafka_2.12-2.4.0/config/server.properties
+#     connect:
+#         build: .
+#         image: kafka-example
+#         hostname: connect
+#         depends_on:
+#             - broker1
+#             - broker2
+#             - broker3
+#         ports:
+#             - "8083:8083"
+#         expose:
+#             - "8083"
+#         volumes:
+#             - ./resources/connect/connect-distributed.properties:/opt/kafka-connect-test/config/connect-distributed.properties
+#             - ./resources/connect/kafka-connect.jar:/opt/kafka-connect-test/jar/kafka-connect.jar
+#             - ./resources/connect/kafka-connect-sink.jar:/opt/kafka-connect-test/jar/kafka-connect-sink.jar
+#         command:
+#             - /bin/sh
+#             - -c
+#             - |
+#                 ./kafka_2.12-2.4.0/bin/connect-distributed.sh /opt/kafka-connect-test/config/connect-distributed.properties 
+    security-ssl:
+        build: .
+        image: kafka-example
+        hostname: security-ssl
+        volumes:
+            - ./resources/security-test2/sasl/zookeeper.properties:/opt/kafka_2.12-2.4.0/config/zookeeper.properties
+            - ./resources/security-test2/sasl/zookeeper_jaas.conf:/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+            - ./resources/security-test2/sasl/server-1.properties:/opt/kafka_2.12-2.4.0/config/server-1.properties
+            - ./resources/security-test2/sasl/server-2.properties:/opt/kafka_2.12-2.4.0/config/server-2.properties
+            - ./resources/security-test2/sasl/server_jaas.conf:/opt/kafka_2.12-2.4.0/config/server_jaas.conf
+            - ./resources/security-test2/sasl/certkeys:/opt/certkeys
+        command:
+            - /bin/sh
+            - -c
+            - |
+                export KAFKA_OPTS=-Djava.security.auth.login.config=/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+                ./kafka_2.12-2.4.0/bin/zookeeper-server-start.sh ./kafka_2.12-2.4.0/config/zookeeper.properties
+    security-ssl:
+        build: .
+        image: kafka-example
+        hostname: security-ssl
+        volumes:
+            - ./resources/security-test2/sasl/zookeeper.properties:/opt/kafka_2.12-2.4.0/config/zookeeper.properties
+            - ./resources/security-test2/sasl/zookeeper_jaas.conf:/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+            - ./resources/security-test2/sasl/server-1.properties:/opt/kafka_2.12-2.4.0/config/server-1.properties
+            - ./resources/security-test2/sasl/server-2.properties:/opt/kafka_2.12-2.4.0/config/server-2.properties
+            - ./resources/security-test2/sasl/server_jaas.conf:/opt/kafka_2.12-2.4.0/config/server_jaas.conf
+            - ./resources/security-test2/sasl/certkeys:/opt/certkeys
+        command:
+            - /bin/sh
+            - -c
+            - |
+                export KAFKA_OPTS=-Djava.security.auth.login.config=/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+                ./kafka_2.12-2.4.0/bin/zookeeper-server-start.sh ./kafka_2.12-2.4.0/config/zookeeper.properties
+#     security-acl:
+#         build: .
+#         image: kafka-example
+#         hostname: security-acl
+#         volumes:
+#             - ./resources/security-test2/acl/zookeeper.properties:/opt/kafka_2.12-2.4.0/config/zookeeper.properties
+#             - ./resources/security-test2/acl/zookeeper_jaas.conf:/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+#             - ./resources/security-test2/acl/server-1.properties:/opt/kafka_2.12-2.4.0/config/server-1.properties
+#             - ./resources/security-test2/acl/server-2.properties:/opt/kafka_2.12-2.4.0/config/server-2.properties
+#             - ./resources/security-test2/acl/server_jaas.conf:/opt/kafka_2.12-2.4.0/config/server_jaas.conf
+#             - ./resources/security-test2/acl/certkeys:/opt/certkeys
+#         command:
+#             - /bin/sh
+#             - -c
+#             - |
+#                 export KAFKA_OPTS=-Djava.security.auth.login.config=/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+#                 ./kafka_2.12-2.4.0/bin/zookeeper-server-start.sh ./kafka_2.12-2.4.0/config/zookeeper.properties
+    # security-test-sasl:
+    #     build: .
+    #     image: kafka-example
+    #     hostname: security-test-sasl
+    #     ports:
+    #         - "19091:19091"
+    #         - "9091:9091"
+    #     expose:
+    #         - "9091"
+    #         - "19091"
+    #     volumes:
+    #         - ./resources/security-test/sasl/server-1.properties:/opt/kafka_2.12-2.4.0/config/server-1.properties
+    #         - ./resources/security-test/sasl/server-2.properties:/opt/kafka_2.12-2.4.0/config/server-2.properties
+    #         - ./resources/security-test/sasl/kafka_server_jaas.conf:/opt/kafka_2.12-2.4.0/config/kafka_server_jaas.conf
+    #         - ./resources/security-test/sasl/zookeeper.properties:/opt/kafka_2.12-2.4.0/config/zookeeper.properties
+    #         - ./resources/security-test/sasl/zookeeper_jaas.conf:/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+    #         - ./resources/security-test/keycerts:/opt/keycerts
+    #     command:
+    #         - /bin/sh
+    #         - -c
+    #         - |
+    #             export KAFKA_OPTS=-Djava.security.auth.login.config=/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+    #             ./kafka_2.12-2.4.0/bin/zookeeper-server-start.sh ./kafka_2.12-2.4.0/config/zookeeper.properties
+#     security-test-sasl2:
+#         build: .
+#         image: kafka-example
+#         hostname: security-test-sasl2
+#         ports:
+#             - "29091:29091"
+#             - "19091:19091"
+#             - "9091:9091"
+#         expose:
+#             - "29091"
+#             - "19091"
+#             - "9091"
+#         volumes:
+#             - ./resources/security-test/acl/server-1.properties:/opt/kafka_2.12-2.4.0/config/server-1.properties
+#             - ./resources/security-test/acl/kafka_server_jaas.conf:/opt/kafka_2.12-2.4.0/config/kafka_server_jaas.conf
+#             - ./resources/security-test/acl/zookeeper.properties:/opt/kafka_2.12-2.4.0/config/zookeeper.properties
+#             - ./resources/security-test/acl/zookeeper_jaas.conf:/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+#             - ./resources/security-test/keycerts:/opt/keycerts
+#         command:
+#             - /bin/sh
+#             - -c
+#             - |
+#                 export KAFKA_OPTS=-Djava.security.auth.login.config=/opt/kafka_2.12-2.4.0/config/zookeeper_jaas.conf
+#                 ./kafka_2.12-2.4.0/bin/zookeeper-server-start.sh ./kafka_2.12-2.4.0/config/zookeeper.properties
+        #networks:
+        #    default:
+        #        ipv4_address: 172.20.1.8
+#networks:
+#    default:
+#        ipam:
+#            config:
+#                - subnet: 172.20.1.0/24   

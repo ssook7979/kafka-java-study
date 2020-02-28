@@ -5,6 +5,10 @@ import org.apache.kafka.common.serialization.Deserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class KafkaJsonDeserializer<T> implements Deserializer<T> {
+	@Override
+	public void close() {
+	}
+
 	Class<T> type;
 	
 	public KafkaJsonDeserializer(Class<T> type) {

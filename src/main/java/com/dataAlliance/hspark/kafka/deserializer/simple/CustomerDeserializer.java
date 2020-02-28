@@ -10,6 +10,10 @@ import com.dataAlliance.hspark.kafka.obj.Customer;
 public class CustomerDeserializer implements Deserializer<Customer> {
 
 	@Override
+	public void close() {
+	}
+
+	@Override
 	public Customer deserialize(String topic, byte[] data) {
 		int customerId;
 		int nameSize;

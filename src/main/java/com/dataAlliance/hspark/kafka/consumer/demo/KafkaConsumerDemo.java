@@ -1,4 +1,6 @@
-package com.dataAlliance.hspark.kafka.consumer;
+package com.dataAlliance.hspark.kafka.consumer.demo;
+
+import com.dataAlliance.hspark.kafka.consumer.HelloConsumer;
 
 public class KafkaConsumerDemo {
 	public static void main(String[] args) {

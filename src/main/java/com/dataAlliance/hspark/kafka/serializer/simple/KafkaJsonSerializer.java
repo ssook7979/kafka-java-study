@@ -7,6 +7,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class KafkaJsonSerializer implements Serializer {
 
 	@Override
+	public void close() {
+	}
+
+	@Override
 	public byte[] serialize(String topic, Object data) {
 		byte[] serVal = null;
 		ObjectMapper objectMapper = new ObjectMapper();

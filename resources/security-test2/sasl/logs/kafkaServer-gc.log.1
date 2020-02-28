@@ -1,0 +1,73 @@
+[2020-02-25T02:16:47.053+0000][gc,heap] Heap region size: 1M
+[2020-02-25T02:16:47.059+0000][gc     ] Using G1
+[2020-02-25T02:16:47.059+0000][gc,heap,coops] Heap address: 0x00000000c0000000, size: 1024 MB, Compressed Oops mode: 32-bit
+[2020-02-25T02:16:47.060+0000][gc,cds       ] Mark closed archive regions in map: [0x00000000fff00000, 0x00000000fff69ff8]
+[2020-02-25T02:16:47.060+0000][gc,cds       ] Mark open archive regions in map: [0x00000000ffe00000, 0x00000000ffe43ff8]
+[2020-02-25T02:16:47.937+0000][gc,start     ] GC(0) Pause Young (Normal) (G1 Evacuation Pause)
+[2020-02-25T02:16:47.937+0000][gc,task      ] GC(0) Using 2 workers of 2 for evacuation
+[2020-02-25T02:16:47.946+0000][gc,phases    ] GC(0)   Pre Evacuate Collection Set: 0.0ms
+[2020-02-25T02:16:47.946+0000][gc,phases    ] GC(0)   Evacuate Collection Set: 7.8ms
+[2020-02-25T02:16:47.946+0000][gc,phases    ] GC(0)   Post Evacuate Collection Set: 0.4ms
+[2020-02-25T02:16:47.946+0000][gc,phases    ] GC(0)   Other: 0.2ms
+[2020-02-25T02:16:47.946+0000][gc,heap      ] GC(0) Eden regions: 51->0(44)
+[2020-02-25T02:16:47.946+0000][gc,heap      ] GC(0) Survivor regions: 0->7(7)
+[2020-02-25T02:16:47.946+0000][gc,heap      ] GC(0) Old regions: 2->3
+[2020-02-25T02:16:47.946+0000][gc,heap      ] GC(0) Humongous regions: 2->2
+[2020-02-25T02:16:47.946+0000][gc,metaspace ] GC(0) Metaspace: 18919K->18919K(1067008K)
+[2020-02-25T02:16:47.946+0000][gc           ] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 53M->9M(1024M) 8.446ms
+[2020-02-25T02:16:47.946+0000][gc,cpu       ] GC(0) User=0.01s Sys=0.01s Real=0.01s
+[2020-02-25T02:16:48.089+0000][gc,start     ] GC(1) Pause Young (Concurrent Start) (Metadata GC Threshold)
+[2020-02-25T02:16:48.089+0000][gc,task      ] GC(1) Using 2 workers of 2 for evacuation
+[2020-02-25T02:16:48.097+0000][gc,phases    ] GC(1)   Pre Evacuate Collection Set: 0.0ms
+[2020-02-25T02:16:48.097+0000][gc,phases    ] GC(1)   Evacuate Collection Set: 8.0ms
+[2020-02-25T02:16:48.097+0000][gc,phases    ] GC(1)   Post Evacuate Collection Set: 0.2ms
+[2020-02-25T02:16:48.097+0000][gc,phases    ] GC(1)   Other: 0.1ms
+[2020-02-25T02:16:48.097+0000][gc,heap      ] GC(1) Eden regions: 7->0(50)
+[2020-02-25T02:16:48.097+0000][gc,heap      ] GC(1) Survivor regions: 7->1(7)
+[2020-02-25T02:16:48.097+0000][gc,heap      ] GC(1) Old regions: 3->10
+[2020-02-25T02:16:48.097+0000][gc,heap      ] GC(1) Humongous regions: 2->2
+[2020-02-25T02:16:48.097+0000][gc,metaspace ] GC(1) Metaspace: 20561K->20561K(1067008K)
+[2020-02-25T02:16:48.097+0000][gc           ] GC(1) Pause Young (Concurrent Start) (Metadata GC Threshold) 16M->10M(1024M) 8.438ms
+[2020-02-25T02:16:48.097+0000][gc,cpu       ] GC(1) User=0.01s Sys=0.01s Real=0.01s
+[2020-02-25T02:16:48.097+0000][gc           ] GC(2) Concurrent Cycle
+[2020-02-25T02:16:48.097+0000][gc,marking   ] GC(2) Concurrent Clear Claimed Marks
+[2020-02-25T02:16:48.097+0000][gc,marking   ] GC(2) Concurrent Clear Claimed Marks 0.018ms
+[2020-02-25T02:16:48.097+0000][gc,marking   ] GC(2) Concurrent Scan Root Regions
+[2020-02-25T02:16:48.098+0000][gc,marking   ] GC(2) Concurrent Scan Root Regions 0.411ms
+[2020-02-25T02:16:48.098+0000][gc,marking   ] GC(2) Concurrent Mark (1.047s)
+[2020-02-25T02:16:48.098+0000][gc,marking   ] GC(2) Concurrent Mark From Roots
+[2020-02-25T02:16:48.098+0000][gc,task      ] GC(2) Using 1 workers of 1 for marking
+[2020-02-25T02:16:48.106+0000][gc,marking   ] GC(2) Concurrent Mark From Roots 7.908ms
+[2020-02-25T02:16:48.106+0000][gc,marking   ] GC(2) Concurrent Preclean
+[2020-02-25T02:16:48.106+0000][gc,marking   ] GC(2) Concurrent Preclean 0.038ms
+[2020-02-25T02:16:48.106+0000][gc,marking   ] GC(2) Concurrent Mark (1.047s, 1.055s) 7.978ms
+[2020-02-25T02:16:48.106+0000][gc,start     ] GC(2) Pause Remark
+[2020-02-25T02:16:48.108+0000][gc,stringtable] GC(2) Cleaned string and symbol table, strings: 6464 processed, 0 removed, symbols: 52656 processed, 49 removed
+[2020-02-25T02:16:48.109+0000][gc            ] GC(2) Pause Remark 11M->11M(1024M) 2.171ms
+[2020-02-25T02:16:48.109+0000][gc,cpu        ] GC(2) User=0.00s Sys=0.00s Real=0.00s
+[2020-02-25T02:16:48.109+0000][gc,marking    ] GC(2) Concurrent Rebuild Remembered Sets
+[2020-02-25T02:16:48.130+0000][gc,marking    ] GC(2) Concurrent Rebuild Remembered Sets 21.582ms
+[2020-02-25T02:16:48.131+0000][gc,start      ] GC(2) Pause Cleanup
+[2020-02-25T02:16:48.131+0000][gc            ] GC(2) Pause Cleanup 12M->12M(1024M) 0.202ms
+[2020-02-25T02:16:48.131+0000][gc,cpu        ] GC(2) User=0.00s Sys=0.00s Real=0.00s
+[2020-02-25T02:16:48.131+0000][gc,marking    ] GC(2) Concurrent Cleanup for Next Mark
+[2020-02-25T02:16:48.140+0000][gc,marking    ] GC(2) Concurrent Cleanup for Next Mark 9.048ms
+[2020-02-25T02:16:48.140+0000][gc            ] GC(2) Concurrent Cycle 42.607ms
+[2020-02-25T02:16:48.860+0000][gc,start      ] GC(3) Pause Young (Normal) (G1 Evacuation Pause)
+[2020-02-25T02:16:48.860+0000][gc,task       ] GC(3) Using 2 workers of 2 for evacuation
+[2020-02-25T02:16:48.866+0000][gc,phases     ] GC(3)   Pre Evacuate Collection Set: 0.0ms
+[2020-02-25T02:16:48.866+0000][gc,phases     ] GC(3)   Evacuate Collection Set: 5.6ms
+[2020-02-25T02:16:48.866+0000][gc,phases     ] GC(3)   Post Evacuate Collection Set: 0.3ms
+[2020-02-25T02:16:48.866+0000][gc,phases     ] GC(3)   Other: 0.1ms
+[2020-02-25T02:16:48.866+0000][gc,heap       ] GC(3) Eden regions: 50->0(45)
+[2020-02-25T02:16:48.866+0000][gc,heap       ] GC(3) Survivor regions: 1->6(7)
+[2020-02-25T02:16:48.866+0000][gc,heap       ] GC(3) Old regions: 10->10
+[2020-02-25T02:16:48.866+0000][gc,heap       ] GC(3) Humongous regions: 131->131
+[2020-02-25T02:16:48.866+0000][gc,metaspace  ] GC(3) Metaspace: 32456K->32456K(1079296K)
+[2020-02-25T02:16:48.866+0000][gc            ] GC(3) Pause Young (Normal) (G1 Evacuation Pause) 189M->143M(1024M) 6.083ms
+[2020-02-25T02:16:48.866+0000][gc,cpu        ] GC(3) User=0.01s Sys=0.00s Real=0.01s
+[2020-02-25T02:20:53.151+0000][gc,heap,exit  ] Heap
+[2020-02-25T02:20:53.151+0000][gc,heap,exit  ]  garbage-first heap   total 1048576K, used 161662K [0x00000000c0000000, 0x0000000100000000)
+[2020-02-25T02:20:53.151+0000][gc,heap,exit  ]   region size 1024K, 22 young (22528K), 6 survivors (6144K)
+[2020-02-25T02:20:53.151+0000][gc,heap,exit  ]  Metaspace       used 34251K, capacity 35797K, committed 35920K, reserved 1081344K
+[2020-02-25T02:20:53.151+0000][gc,heap,exit  ]   class space    used 4239K, capacity 4974K, committed 5040K, reserved 1048576K
